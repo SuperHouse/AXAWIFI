@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="9.0.1">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -67,6 +68,8 @@
 <layer number="59" name="tCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="60" name="p_dimension" color="6" fill="0" visible="no" active="no"/>
 <layer number="61" name="pt_docu" color="7" fill="0" visible="no" active="no"/>
+<layer number="88" name="SimResults" color="9" fill="1" visible="yes" active="yes"/>
+<layer number="89" name="SimProbes" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="90" name="Modules" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
@@ -853,23 +856,6 @@ type 0309, grid 2.5 mm</description>
 <smd name="TGND" x="0" y="0" dx="2.4892" dy="2.9972" layer="1"/>
 <circle x="-2.54" y="2.54" radius="0.254" width="0.4064" layer="51"/>
 </package>
-<package name="REGMODULE4PIN">
-<wire x1="9" y1="-6" x2="9" y2="6" width="0.1524" layer="21"/>
-<wire x1="-9" y1="6" x2="-9" y2="-6" width="0.1524" layer="21"/>
-<wire x1="9" y1="-6" x2="-9" y2="-6" width="0.1524" layer="21"/>
-<wire x1="9" y1="6" x2="-9" y2="6" width="0.1524" layer="21"/>
-<pad name="1" x="-7.8" y="4.7" drill="0.8128" diameter="1.27"/>
-<pad name="2" x="-7.8" y="-4.7" drill="0.8128" diameter="1.27"/>
-<pad name="3" x="7.8" y="-4.7" drill="0.8128" diameter="1.27"/>
-<pad name="4" x="7.8" y="4.7" drill="0.8128" diameter="1.27"/>
-<text x="-2.921" y="0.334" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-3.556" y="-1.635" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<circle x="-6" y="5" radius="0.3" width="0.4064" layer="21"/>
-<text x="-7" y="3" size="0.8128" layer="21" ratio="15">IN-</text>
-<text x="-7" y="-4" size="0.8128" layer="21" ratio="15">IN+</text>
-<text x="4" y="-4" size="0.8128" layer="21" ratio="15">OUT+</text>
-<text x="4" y="3" size="0.8128" layer="21" ratio="15">OUT-</text>
-</package>
 <package name="1X03">
 <wire x1="3.81" y1="0.635" x2="4.445" y2="1.27" width="0.2032" layer="21"/>
 <wire x1="4.445" y1="1.27" x2="5.715" y2="1.27" width="0.2032" layer="21"/>
@@ -1251,6 +1237,22 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <pad name="15" x="-2" y="7" drill="0.8"/>
 <pad name="16" x="-4" y="7" drill="0.8"/>
 </package>
+<package name="K78XX-500R3">
+<pad name="2" x="0" y="0" drill="1" shape="long" rot="R90"/>
+<pad name="1" x="-2.54" y="0" drill="1" shape="long" rot="R90"/>
+<pad name="3" x="2.54" y="0" drill="1" shape="long" rot="R90"/>
+<wire x1="-5.8" y1="-2.15" x2="5.8" y2="-2.15" width="0.1524" layer="51"/>
+<wire x1="5.8" y1="-2.15" x2="5.8" y2="5.35" width="0.1524" layer="51"/>
+<wire x1="5.8" y1="5.35" x2="-5.8" y2="5.35" width="0.1524" layer="51"/>
+<wire x1="-5.8" y1="5.35" x2="-5.8" y2="-2.15" width="0.1524" layer="51"/>
+<circle x="-4" y="0" radius="0.4" width="0.3" layer="21"/>
+<wire x1="5.8" y1="5.35" x2="-5.8" y2="5.35" width="0.1524" layer="21"/>
+<wire x1="5.8" y1="-2.15" x2="5.8" y2="5.35" width="0.1524" layer="21"/>
+<wire x1="-5.8" y1="5.35" x2="-5.8" y2="-2.15" width="0.1524" layer="21"/>
+<wire x1="-5.8" y1="-2.15" x2="5.8" y2="-2.15" width="0.1524" layer="21"/>
+<text x="-5" y="2" size="1.016" layer="25">&gt;NAME</text>
+<text x="1" y="2" size="1.016" layer="27">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="LED">
@@ -1333,18 +1335,6 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <pin name="VREN" x="15.24" y="7.62" length="middle" direction="out" rot="R180"/>
 <pin name="TGND" x="0" y="-15.24" length="middle" direction="pwr" rot="R90"/>
 </symbol>
-<symbol name="REGMODULE4PIN">
-<wire x1="-10.16" y1="7.62" x2="-10.16" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-7.62" x2="10.16" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-7.62" x2="10.16" y2="7.62" width="0.254" layer="94"/>
-<wire x1="10.16" y1="7.62" x2="-10.16" y2="7.62" width="0.254" layer="94"/>
-<text x="-5.08" y="0" size="1.778" layer="95">&gt;NAME</text>
-<text x="-5.08" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="VIN-" x="-15.24" y="5.08" length="middle" direction="pwr"/>
-<pin name="VOUT-" x="15.24" y="5.08" length="middle" rot="R180"/>
-<pin name="VOUT+" x="15.24" y="-5.08" length="middle" rot="R180"/>
-<pin name="VIN+" x="-15.24" y="-5.08" length="middle" direction="pwr"/>
-</symbol>
 <symbol name="M03">
 <wire x1="3.81" y1="-5.08" x2="-2.54" y2="-5.08" width="0.4064" layer="94"/>
 <wire x1="1.27" y1="2.54" x2="2.54" y2="2.54" width="0.6096" layer="94"/>
@@ -1382,6 +1372,20 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <pin name="GPIO4" x="17.78" y="2.54" length="middle" rot="R180"/>
 <pin name="RXD" x="17.78" y="5.08" length="middle" direction="in" rot="R180"/>
 <pin name="TXD" x="17.78" y="7.62" length="middle" direction="out" rot="R180"/>
+</symbol>
+<symbol name="78XX">
+<wire x1="-5.08" y1="-5.08" x2="5.08" y2="-5.08" width="0.4064" layer="94"/>
+<wire x1="5.08" y1="-5.08" x2="5.08" y2="2.54" width="0.4064" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="-5.08" y2="2.54" width="0.4064" layer="94"/>
+<wire x1="-5.08" y1="2.54" x2="-5.08" y2="-5.08" width="0.4064" layer="94"/>
+<text x="2.54" y="-7.62" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.54" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-2.032" y="-4.318" size="1.524" layer="95">GND</text>
+<text x="-4.445" y="-0.635" size="1.524" layer="95">IN</text>
+<text x="0.635" y="-0.635" size="1.524" layer="95">OUT</text>
+<pin name="IN" x="-7.62" y="0" visible="off" length="short" direction="in"/>
+<pin name="GND" x="0" y="-7.62" visible="off" length="short" direction="in" rot="R90"/>
+<pin name="OUT" x="7.62" y="0" visible="off" length="short" direction="out" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -1713,24 +1717,6 @@ Standard 0603 ceramic capacitor, and 0.1" leaded capacitor.</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="REGMODULE4PIN">
-<gates>
-<gate name="G$1" symbol="REGMODULE4PIN" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="REGMODULE4PIN">
-<connects>
-<connect gate="G$1" pin="VIN+" pad="2"/>
-<connect gate="G$1" pin="VIN-" pad="1"/>
-<connect gate="G$1" pin="VOUT+" pad="3"/>
-<connect gate="G$1" pin="VOUT-" pad="4"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="M03" prefix="JP" uservalue="yes">
 <description>&lt;b&gt;Header 3&lt;/b&gt;
 Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-00116), right angle break away headers (PRT-00553), swiss pins (PRT-00743), machine pins (PRT-00117), and female headers (PRT-00115). Molex polarized connector foot print use with SKU : PRT-08232 with associated crimp pins and housings.</description>
@@ -1936,6 +1922,23 @@ Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <connect gate="G$1" pin="RXD" pad="15"/>
 <connect gate="G$1" pin="TXD" pad="16"/>
 <connect gate="G$1" pin="VCC" pad="8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="K78XX-500R3">
+<gates>
+<gate name="G$1" symbol="78XX" x="0" y="2.54"/>
+</gates>
+<devices>
+<device name="" package="K78XX-500R3">
+<connects>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="IN" pad="1"/>
+<connect gate="G$1" pin="OUT" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -2984,7 +2987,6 @@ Standard 2-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="R9" library="freetronics-jon" deviceset="RESISTOR" device="0603" value="4K7"/>
 <part name="R10" library="freetronics-jon" deviceset="RESISTOR" device="0603" value="22K"/>
 <part name="R11" library="freetronics-jon" deviceset="RESISTOR" device="0603" value="22K"/>
-<part name="M1" library="freetronics-jon" deviceset="REGMODULE4PIN" device=""/>
 <part name="P+4" library="supply1" deviceset="+12V" device=""/>
 <part name="JP2" library="freetronics-jon" deviceset="M03" device="PTH"/>
 <part name="R2" library="freetronics-jon" deviceset="RESISTOR" device="0603" value="1K"/>
@@ -2998,19 +3000,21 @@ Standard 2-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="LED2" library="freetronics-jon" deviceset="LED" device="0603" value="RED"/>
 <part name="R8" library="freetronics-jon" deviceset="RESISTOR" device="0603" value="10K"/>
 <part name="R12" library="freetronics-jon" deviceset="RESISTOR" device="0603" value="10K"/>
+<part name="REG1" library="freetronics-jon" deviceset="K78XX-500R3" device="" value="K7833-500R3"/>
+<part name="C1" library="analyzer" deviceset="CPOL-US" device="UD-6,3X5,8" value="22uF 40V"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <text x="149.86" y="12.7" size="3.048" layer="94">AXA Window Motor WiFi Adapter</text>
-<text x="215.9" y="6.858" size="1.778" layer="94">v1.0 (2017-06-04)</text>
+<text x="215.9" y="6.858" size="1.778" layer="94">v1.1 (2018-06-25)</text>
 <text x="149.606" y="6.858" size="1.778" layer="94">superhouse.tv/axawifi</text>
 <text x="187.96" y="6.858" size="1.778" layer="94">SKU: AXAWIFI</text>
 <frame x1="0" y1="0" x2="248.92" y2="185.42" columns="8" rows="5" layer="94"/>
 <frame x1="147.32" y1="5.08" x2="243.84" y2="17.78" columns="0" rows="0" layer="94" border-left="no" border-top="no" border-right="no" border-bottom="no"/>
 <frame x1="185.42" y1="5.08" x2="213.36" y2="10.16" columns="8" rows="5" layer="94"/>
 <frame x1="213.36" y1="5.08" x2="243.84" y2="10.16" columns="8" rows="5" layer="94"/>
-<text x="7.366" y="6.858" size="1.778" layer="94">Copyright 2017 SuperHouse Automation Pty Ltd
+<text x="7.366" y="6.858" size="1.778" layer="94">Copyright 2017-2018 SuperHouse Automation Pty Ltd
 Released under the terms of
 the TAPR Open Hardware License
 www.tapr.org/OHL</text>
@@ -3018,7 +3022,6 @@ www.tapr.org/OHL</text>
 <text x="165.1" y="177.8" size="1.778" layer="94">3V3 Power Supply</text>
 <wire x1="139.7" y1="127" x2="245.11" y2="127" width="0.4064" layer="97" style="longdash"/>
 <wire x1="139.7" y1="127" x2="139.7" y2="181.61" width="0.4064" layer="97" style="longdash"/>
-<text x="157.48" y="129.54" size="1.778" layer="97">NOTE: Pre-adjust vreg module to 3.3V before installation</text>
 <text x="101.6" y="78.74" size="1.778" layer="94">GND</text>
 <text x="101.6" y="83.82" size="1.778" layer="94">3V3</text>
 </plain>
@@ -3047,7 +3050,6 @@ www.tapr.org/OHL</text>
 <instance part="R9" gate="G$1" x="137.16" y="88.9" rot="R90"/>
 <instance part="R10" gate="G$1" x="172.72" y="78.74" rot="R90"/>
 <instance part="R11" gate="G$1" x="172.72" y="43.18" rot="R90"/>
-<instance part="M1" gate="G$1" x="185.42" y="162.56" rot="MR180"/>
 <instance part="P+4" gate="1" x="165.1" y="172.72"/>
 <instance part="JP2" gate="G$1" x="238.76" y="58.42" rot="R180"/>
 <instance part="R2" gate="G$1" x="139.7" y="60.96"/>
@@ -3061,6 +3063,11 @@ www.tapr.org/OHL</text>
 <instance part="LED2" gate="G$1" x="83.82" y="101.6"/>
 <instance part="R8" gate="G$1" x="91.44" y="88.9" rot="R90"/>
 <instance part="R12" gate="G$1" x="91.44" y="43.18" rot="R90"/>
+<instance part="REG1" gate="G$1" x="182.88" y="167.64"/>
+<instance part="C1" gate="G$1" x="22.86" y="43.18" smashed="yes">
+<attribute name="NAME" x="23.876" y="44.323" size="1.778" layer="95"/>
+<attribute name="VALUE" x="18.796" y="36.449" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -3070,8 +3077,8 @@ www.tapr.org/OHL</text>
 <wire x1="157.48" y1="165.1" x2="165.1" y2="165.1" width="0.1524" layer="91"/>
 <pinref part="JP4" gate="G$1" pin="2"/>
 <wire x1="213.36" y1="147.32" x2="213.36" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="142.24" x2="203.2" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="142.24" x2="213.36" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="142.24" x2="182.88" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="142.24" x2="213.36" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="142.24" x2="165.1" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="GND13" gate="1" pin="GND"/>
 <pinref part="C2" gate="G$1" pin="-"/>
@@ -3079,16 +3086,11 @@ www.tapr.org/OHL</text>
 <wire x1="226.06" y1="144.78" x2="226.06" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="142.24" x2="213.36" y2="142.24" width="0.1524" layer="91"/>
 <junction x="213.36" y="142.24"/>
-<wire x1="200.66" y1="157.48" x2="203.2" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="157.48" x2="203.2" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="157.48" x2="170.18" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="157.48" x2="165.1" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="165.1" x2="165.1" y2="142.24" width="0.1524" layer="91"/>
 <junction x="165.1" y="142.24"/>
-<junction x="203.2" y="142.24"/>
-<pinref part="M1" gate="G$1" pin="VIN-"/>
-<pinref part="M1" gate="G$1" pin="VOUT-"/>
-<wire x1="165.1" y1="165.1" x2="165.1" y2="157.48" width="0.1524" layer="91"/>
-<junction x="165.1" y="157.48"/>
+<pinref part="REG1" gate="G$1" pin="GND"/>
+<wire x1="182.88" y1="160.02" x2="182.88" y2="142.24" width="0.1524" layer="91"/>
+<junction x="182.88" y="142.24"/>
 </segment>
 <segment>
 <pinref part="IC2" gate="G$1" pin="GND"/>
@@ -3132,6 +3134,9 @@ www.tapr.org/OHL</text>
 <wire x1="119.38" y1="78.74" x2="121.92" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="78.74" x2="121.92" y2="35.56" width="0.1524" layer="91"/>
 <junction x="121.92" y="35.56"/>
+<wire x1="81.28" y1="35.56" x2="22.86" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="C1" gate="G$1" pin="-"/>
+<wire x1="22.86" y1="35.56" x2="22.86" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SW1" gate="1" pin="S"/>
@@ -3152,13 +3157,13 @@ www.tapr.org/OHL</text>
 <junction x="213.36" y="167.64"/>
 <pinref part="C2" gate="G$1" pin="+"/>
 <pinref part="P+1" gate="G$1" pin="3.3V"/>
-<wire x1="200.66" y1="167.64" x2="213.36" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="190.5" y1="167.64" x2="213.36" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="167.64" x2="226.06" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="R5" gate="G$1" pin="2"/>
 <wire x1="226.06" y1="167.64" x2="226.06" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="165.1" x2="226.06" y2="167.64" width="0.1524" layer="91"/>
 <junction x="226.06" y="167.64"/>
-<pinref part="M1" gate="G$1" pin="VOUT+"/>
+<pinref part="REG1" gate="G$1" pin="OUT"/>
 </segment>
 <segment>
 <pinref part="IC2" gate="G$1" pin="VCC"/>
@@ -3191,6 +3196,9 @@ www.tapr.org/OHL</text>
 <wire x1="119.38" y1="83.82" x2="121.92" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="83.82" x2="121.92" y2="106.68" width="0.1524" layer="91"/>
 <junction x="121.92" y="106.68"/>
+<pinref part="C1" gate="G$1" pin="+"/>
+<wire x1="22.86" y1="45.72" x2="22.86" y2="48.26" width="0.1524" layer="91"/>
+<junction x="22.86" y="48.26"/>
 </segment>
 </net>
 <net name="LINTX" class="0">
@@ -3267,11 +3275,11 @@ www.tapr.org/OHL</text>
 <segment>
 <wire x1="157.48" y1="167.64" x2="165.1" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="JP4" gate="G$1" pin="1"/>
-<wire x1="170.18" y1="167.64" x2="165.1" y2="167.64" width="0.1524" layer="91"/>
-<pinref part="M1" gate="G$1" pin="VIN+"/>
+<wire x1="175.26" y1="167.64" x2="165.1" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="P+4" gate="1" pin="+12V"/>
 <wire x1="165.1" y1="167.64" x2="165.1" y2="170.18" width="0.1524" layer="91"/>
 <junction x="165.1" y="167.64"/>
+<pinref part="REG1" gate="G$1" pin="IN"/>
 </segment>
 </net>
 <net name="DATA" class="0">
@@ -3440,16 +3448,24 @@ www.tapr.org/OHL</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="206,1,213.36,149.86,3.3V,,,,,"/>
-<approved hash="206,1,213.36,147.32,3.3V,,,,,"/>
-<approved hash="206,1,203.2,167.64,3.3V,,,,,"/>
-<approved hash="206,1,203.2,165.1,3.3V,,,,,"/>
-<approved hash="208,1,10.16,172.72,3.3V,sup,,,,"/>
-<approved hash="208,1,213.36,149.86,3.3V,out,,,,"/>
-<approved hash="208,1,213.36,147.32,3.3V,out,,,,"/>
-<approved hash="208,1,203.2,167.64,3.3V,out,,,,"/>
-<approved hash="208,1,203.2,165.1,3.3V,out,,,,"/>
-<approved hash="208,1,236.22,167.64,3.3V,sup,,,,"/>
+<approved hash="104,1,205.74,53.34,IC1,VSS,GND,,,"/>
+<approved hash="104,1,205.74,63.5,IC1,VBB,+12V,,,"/>
+<approved hash="104,1,190.5,45.72,IC1,TGND,GND,,,"/>
+<approved hash="104,1,43.18,48.26,IC2,VCC,3.3V,,,"/>
+<approved hash="208,1,226.06,170.18,3.3V,sup,,,,"/>
+<approved hash="208,1,190.5,167.64,3.3V,out,,,,"/>
+<approved hash="208,1,22.86,109.22,3.3V,sup,,,,"/>
+<approved hash="209,1,43.18,63.5,ADC,,,,,"/>
+<approved hash="106,1,43.18,63.5,ADC,,,,,"/>
+<approved hash="106,1,78.74,60.96,GPIO4,,,,,"/>
+<approved hash="106,1,78.74,58.42,GPIO5,,,,,"/>
+<approved hash="106,1,43.18,53.34,GPIO12,,,,,"/>
+<approved hash="106,1,43.18,50.8,GPIO13,,,,,"/>
+<approved hash="106,1,43.18,55.88,GPIO14,,,,,"/>
+<approved hash="106,1,43.18,58.42,GPIO16,,,,,"/>
+<approved hash="113,1,234.357,56.8604,JP2,,,,,"/>
+<approved hash="113,1,116.163,86.6496,JP3,,,,,"/>
+<approved hash="113,1,154.263,164.81,JP4,,,,,"/>
 </errors>
 </schematic>
 </drawing>

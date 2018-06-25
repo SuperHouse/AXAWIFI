@@ -1,6 +1,6 @@
 AXA Electric Window Motor WiFi Controller (ESP-12)
 ===================================================
-Copyright 2017 SuperHouse Automation Pty Ltd  www.superhouse.tv  
+Copyright 2017-2018 SuperHouse Automation Pty Ltd  www.superhouse.tv  
 
 Add-in board for AXA domestic electric window mechanisms, to fit into
 the battery compartment in place of the AA cells that are normally
