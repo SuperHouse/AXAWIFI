@@ -7,7 +7,7 @@ into the battery compartment in place of the AA cells that are normally
 installed. It uses an ESP8266 to connect to WiFi, and can then send
 control signals to the AXA window motor using LINbus.
 
-![Axa Wifi PCB](Images/AXAWIFI-v1_1-oblique.jpg)
+![Axa Wifi PCB](Images/AXAWIFI-fit-test-2.jpg)
 
 An external 12Vdc power connection is required. Power is supplied to
 the Axa Wifi board, which in turn passes on power and data to the
