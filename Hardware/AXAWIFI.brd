@@ -976,10 +976,6 @@ design rules under a new name.</description>
 <attribute name="NAME" x="25.492" y="21.111" size="0.4064" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="24.984" y="23.0348" size="1.016" layer="27" font="vector"/>
 </element>
-<element name="R10" library="SuperHouse-Resistors" library_urn="urn:adsk.eagle:library:28961094" package="R0603" package3d_urn="urn:adsk.eagle:package:28961141/1" value="22K" x="12.7" y="17" smashed="yes" rot="R180">
-<attribute name="NAME" x="13.589" y="16.492" size="0.4064" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="9.284" y="17.0348" size="1.016" layer="27" font="vector"/>
-</element>
 <element name="R11" library="SuperHouse-Resistors" library_urn="urn:adsk.eagle:library:28961094" package="R0603" package3d_urn="urn:adsk.eagle:package:28961141/1" value="22K" x="22" y="23" smashed="yes" rot="R180">
 <attribute name="NAME" x="22.889" y="22.492" size="0.4064" layer="25" font="vector" rot="R180"/>
 <attribute name="VALUE" x="20.984" y="21.0348" size="1.016" layer="27" font="vector"/>
@@ -1078,7 +1074,6 @@ design rules under a new name.</description>
 <contactref element="J1" pad="1"/>
 <contactref element="C3" pad="-"/>
 <contactref element="C4" pad="2"/>
-<contactref element="R10" pad="1"/>
 <contactref element="R11" pad="1"/>
 <wire x1="89" y1="2.95" x2="85.5" y2="12" width="0" layer="19" extent="1-1"/>
 <wire x1="81.92" y1="2.95" x2="89" y2="2.95" width="0" layer="19" extent="1-1"/>
@@ -1092,10 +1087,9 @@ design rules under a new name.</description>
 <wire x1="12.7" y1="22.86" x2="22.762" y2="23" width="0" layer="19" extent="1-1"/>
 <wire x1="9.906" y1="24.765" x2="12.7" y2="22.86" width="0" layer="19" extent="1-1"/>
 <wire x1="13.462" y1="19" x2="12.7" y2="22.86" width="0" layer="19" extent="1-1"/>
-<wire x1="13.462" y1="17" x2="13.462" y2="19" width="0" layer="19" extent="1-1"/>
-<wire x1="11.08" y1="3.33" x2="13.462" y2="17" width="0" layer="19" extent="1-1"/>
+<wire x1="11.08" y1="3.33" x2="13.462" y2="19" width="0" layer="19" extent="1-1"/>
 <wire x1="30.21" y1="4.66" x2="32" y2="22.762" width="0" layer="19" extent="1-1"/>
-<wire x1="34.29" y1="-3.81" x2="11.08" y2="3.33" width="0" layer="19" extent="1-1"/>
+<wire x1="34.29" y1="-3.81" x2="30.21" y2="4.66" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="3.3V">
 <contactref element="R5" pad="2"/>
@@ -1226,15 +1220,6 @@ design rules under a new name.</description>
 <wire x1="27.94" y1="5.08" x2="3.96" y2="4.66" width="0.3048" layer="1"/>
 <wire x1="3.96" y1="4.66" x2="2.54" y2="6.08" width="0.3048" layer="1"/>
 </signal>
-<signal name="LIN_CS">
-<contactref element="IC1" pad="2"/>
-<wire x1="15.494" y1="22.225" x2="18.415" y2="22.225" width="0.3048" layer="1"/>
-<wire x1="18.415" y1="22.225" x2="18.415" y2="17" width="0.3048" layer="16"/>
-<via x="18.415" y="22.225" extent="1-16" drill="0.6"/>
-<via x="18.415" y="17" extent="1-16" drill="0.6"/>
-<contactref element="R10" pad="2"/>
-<wire x1="11.938" y1="17" x2="15.494" y2="22.225" width="0" layer="19" extent="1-1"/>
-</signal>
 <signal name="!LIN_WAKE">
 <contactref element="IC1" pad="3"/>
 <wire x1="15.494" y1="23.495" x2="19.505" y2="23.495" width="0.3048" layer="1"/>
@@ -1289,6 +1274,8 @@ design rules under a new name.</description>
 <wire x1="32" y1="21.238" x2="32.538" y2="20.7" width="0.3048" layer="1"/>
 <contactref element="IC2" pad="10"/>
 <wire x1="32.538" y1="20.7" x2="35.68" y2="20.7" width="0.3048" layer="1"/>
+<contactref element="IC1" pad="2"/>
+<wire x1="15.494" y1="22.225" x2="32" y2="21.238" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="!RST">
 <contactref element="SW1" pad="1"/>
@@ -1312,10 +1299,10 @@ design rules under a new name.</description>
 <contactref element="LED2" pad="C"/>
 <wire x1="70.238" y1="22" x2="70.238" y2="24" width="0.254" layer="1"/>
 </signal>
-<signal name="IO4">
+<signal name="IO4_SDA">
 <contactref element="IC2" pad="14"/>
 </signal>
-<signal name="IO5">
+<signal name="IO5_SCL">
 <contactref element="IC2" pad="13"/>
 </signal>
 <signal name="ADC">
