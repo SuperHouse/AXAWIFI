@@ -1,24 +1,38 @@
-AXA Electric Window Motor WiFi Controller (ESP-12)
+AXA Electric Window Motor WiFi Controller (ESP8266)
 ===================================================
-Copyright 2017-2018 SuperHouse Automation Pty Ltd  www.superhouse.tv  
+Copyright 2017-2021 SuperHouse Automation Pty Ltd  www.superhouse.tv  
 
-Add-in board for AXA domestic electric window mechanisms, to fit into
-the battery compartment in place of the AA cells that are normally
-installed. Uses an ESP8266 to connect to WiFi, and controls the AXA
-window motor using LINbus.
+An add-in board for AXA domestic electric window mechanisms, to fit
+into the battery compartment in place of the AA cells that are normally
+installed. It uses an ESP8266 to connect to WiFi, and can then send
+control signals to the AXA window motor using LINbus.
 
-More information is available on the project page at:
+![Axa Wifi PCB](Images/AXAWIFI-v1_1-oblique.jpg)
 
-  http://www.superhouse.tv/axawifi
+An external 12Vdc power connection is required. Power is supplied to
+the Axa Wifi board, which in turn passes on power and data to the
+existing controller in the window motor.
+
+Features:
+
+ * ESP8266 microcontroller with WiFi.
+ * LIN bus interface.
+ * Fits inside Axa battery compartment.
+
+More information:
+
+  [www.superhouse.tv/axawifi](https://www.superhouse.tv/axawifi)
 
 
 INSTALLATION
 ------------
-The design is saved as an EAGLE project. EAGLE PCB design software is
-available from www.cadsoftusa.com free for non-commercial use. To use
-this project download it and place the directory containing these files
-into the "eagle" directory on your computer. Then open EAGLE and
-navigate to the projects listing.
+The design is saved as an EAGLE project. Install EAGLE and open the
+files directly.
+
+
+CREDITS
+-------
+Designed by Jonathan Oxer jon@oxer.com.au
 
 
 DISTRIBUTION
